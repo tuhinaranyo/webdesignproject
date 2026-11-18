@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>রকেট কীভাবে ওড়ে? — খুদে বিজ্ঞানী</title>
+  <meta name="description" content="বেলুন, নিউটনের তৃতীয় সূত্র আর নিজের রকেট উৎক্ষেপণ। বাংলায়, খেলতে খেলতে।" />
+  <meta name="theme-color" content="#edf2ff" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/kb.css" />
+</head>
+<body class="bn-num">
+  <header class="top">
+    <div class="wrap">
+      <div class="top__bar soft">
+        <a href="index.html" class="back soft-sm" aria-label="বাড়ি ফিরে যাও">🏠</a>
+        <span class="brand">🚀 রকেট ও মহাকাশ</span>
+        <button class="stars soft-in voice-btn" id="speakBtn" aria-label="তুহিনের কথা শোনো">🔊 শোনো</button>
+      </div>
+      <nav class="steps" id="steps" aria-label="ধাপ">
+        <i class="on">১</i><i>২</i><i>৩</i><i>৪</i><i>৫</i>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <h1 class="lesson-title">রকেট কীভাবে ওড়ে?</h1>
+
+    <div class="buddy">
+      <div class="tuhin" id="tuhin" aria-hidden="true"></div>
+      <p class="bubble soft" id="bubble" aria-live="polite"></p>
+    </div>
+
+    <!-- ১. গল্প -->
+    <section class="step active" data-step="0" data-say="একটা বেলুন ফুলিয়ে মুখটা ছেড়ে দিলে কী হয়, দেখেছ কখনো? নিচের বোতাম চেপে বেলুনটা ছেড়ে দাও!">
+      <div class="panel soft">
+        <div class="balloon-stage soft-in" id="balloonStage">
+          <svg class="balloon" id="balloon" viewBox="0 0 120 120" aria-hidden="true">
+            <path d="M14 60c0-26 22-42 50-42s42 18 42 42-16 42-42 42S14 86 14 60z" fill="#ff4f8b"/>
+            <path d="M14 60l-12-8v16z" fill="#d6336e"/>
+            <ellipse cx="80" cy="40" rx="14" ry="8" fill="#fff" opacity=".45"/>
+          </svg>
+          <span class="puff" style="left:40%;top:46%;--dy:-30px"></span>
+          <span class="puff" style="left:40%;top:50%;--dy:10px;animation-delay:.1s"></span>
+          <span class="puff" style="left:40%;top:54%;--dy:40px;animation-delay:.2s"></span>
+          <div class="balloon-arrows"><span>⬅️ বাতাস যায় পেছনে</span><span>বেলুন যায় সামনে ➡️</span></div>
+        </div>
+        <div class="step-nav" style="margin:16px 0 0">
+          <button class="btn btn--go" id="fireBalloon">🎈 বেলুন ছেড়ে দাও</button>
+        </div>
+        <div class="fact soft-in" id="fact1" hidden>
+          <p><b>নিউটনের তৃতীয় সূত্র:</b> প্রতিটি ক্রিয়ারই একটা সমান ও বিপরীত প্রতিক্রিয়া আছে।</p>
+          <p style="margin-top:8px">রকেটের ইঞ্জিন প্রচণ্ড জোরে গরম গ্যাস <b>নিচে</b> ঠেলে দেয়, তাই রকেট ছোটে <b>ওপরে</b>। এই ধাক্কার নাম <b>থ্রাস্ট</b>, মানে ঠেলা বল।</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ২. সিমুলেটর -->
+    <section class="step" data-step="1" data-say="এবার তোমার পালা! জ্বালানি আর মালপত্রের ওজন ঠিক করো, তারপর উৎক্ষেপণ করো। দেখো তো মহাকাশে পৌঁছাতে পারো কিনা!">
+      <div class="sim">
+        <div class="sky" id="sky">
+          <div class="sky__night" id="night"></div>
+          <div class="sky__stars" id="starsBg"></div>
+          <div class="world-layer" id="worldLayer"></div>
+          <div class="rocket" id="rocket">
+            <svg viewBox="0 0 56 130" aria-hidden="true">
+              <g class="flame">
+                <path d="M16 96q12 40 24 0z" fill="#ffc93c"/>
+                <path d="M21 96q7 24 14 0z" fill="#fff3c4"/>
+              </g>
+              <path d="M8 74l-8 22h16zM48 74l8 22H40z" fill="#ff4f8b"/>
+              <path d="M28 0C10 18 10 50 12 96h32c2-46 2-78-16-96z" fill="#f7f9ff" stroke="#c9d3f2" stroke-width="2"/>
+              <path d="M28 0c-8 8-12 16-14 26h28C40 16 36 8 28 0z" fill="#ff7a1a"/>
+              <circle cx="28" cy="48" r="9" fill="#2f6bff" stroke="#fff" stroke-width="3"/>
+              <rect x="24" y="66" width="8" height="26" rx="4" fill="#ff4f8b"/>
+            </svg>
+          </div>
+          <div class="altimeter" id="alt">০ কিমি</div>
+          <div class="countdown-big" id="cd"></div>
+        </div>
+
+        <div class="controls">
+          <div class="ctrl soft">
+            <label for="fuel">⛽ জ্বালানি <output id="fuelOut">৬</output></label>
+            <input type="range" id="fuel" min="1" max="10" value="6" />
+          </div>
+          <div class="ctrl soft">
+            <label for="load">📦 মালপত্রের ওজন <output id="loadOut">৪ কেজি</output></label>
+            <input type="range" id="load" min="0" max="12" value="4" />
+          </div>
+          <div class="forces soft-in">
+            <div class="force force--up"><span>⬆️ ঠেলা বল</span><div class="force__bar"><span id="thrustBar"></span></div></div>
+            <div class="force force--down"><span>⬇️ ওজন</span><div class="force__bar"><span id="weightBar"></span></div></div>
+            <p class="verdict" id="verdict"></p>
+          </div>
+          <button class="btn btn--go" id="launch">🚀 উৎক্ষেপণ!</button>
+          <ul class="missions" id="missions">
+            <li class="soft-sm" data-m="lift">মাটি ছেড়ে ওড়ো</li>
+            <li class="soft-sm" data-m="cloud">মেঘের ওপরে যাও (১০ কিমি)</li>
+            <li class="soft-sm" data-m="space">মহাকাশে পৌঁছাও (১০০ কিমি)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ৩. বাসায় করে দেখো -->
+    <section class="step" data-step="2" data-say="এবার বাসায় নিজের হাতে একটা বেলুন রকেট বানাও! খরচ প্রায় নেই বললেই চলে, ঘরে যা আছে তা দিয়েই হবে।">
+      <div class="panel soft">
+        <h2 class="sec-title">বেলুন রকেট বানাও! 🎈</h2>
+        <p class="muted">যা যা লাগবে:</p>
+        <ul class="materials">
+          <li class="soft-sm"><span>🎈</span>একটা বেলুন</li>
+          <li class="soft-sm"><span>🧵</span>লম্বা সুতা (৩–৪ মিটার)</li>
+          <li class="soft-sm"><span>🥤</span>একটা স্ট্র</li>
+          <li class="soft-sm"><span>🩹</span>স্কচটেপ</li>
+        </ul>
+        <ol class="howto">
+          <li class="soft-in">সুতাটা স্ট্রর ভেতর দিয়ে ঢুকিয়ে দাও।</li>
+          <li class="soft-in">সুতার দুই মাথা ঘরের দুই পাশে চেয়ার বা জানালার গ্রিলে টানটান করে বাঁধো।</li>
+          <li class="soft-in">বেলুন ফুলিয়ে মুখটা আঙুল দিয়ে চেপে ধরো। এখনই ছেড়ো না!</li>
+          <li class="soft-in">টেপ দিয়ে বেলুনটা স্ট্রর গায়ে লাগিয়ে দাও।</li>
+          <li class="soft-in">এবার ছেড়ে দাও, আর দেখো তোমার রকেট কেমন সাঁই করে ছোটে! 🚀</li>
+        </ol>
+        <p class="fact soft-in"><b>চ্যালেঞ্জ:</b> বেলুন কম ফোলালে কী হয়? দুটো বেলুন লাগালে রকেট কি আরও জোরে ছোটে?</p>
+        <p class="safety" style="margin-top:14px">⚠️ কাজটা বাবা-মা, ভাই-বোন বা বড় কারো সাথে মিলে করো।</p>
+        <label class="tried soft-sm"><input type="checkbox" id="tried" /> আমি করে দেখেছি! ✅</label>
+      </div>
+    </section>
+
+    <!-- ৪. কুইজ -->
+    <section class="step" data-step="3" data-say="ছোট্ট একটা কুইজ! তিনটা প্রশ্ন। ভুল হলে ভয় নেই, আবার চেষ্টা করো।">
+      <div id="quiz"></div>
+    </section>
+
+    <!-- ৫. ব্যাজ -->
+    <section class="step" data-step="4" data-say="অভিনন্দন! তুমি এখন একজন খুদে রকেট বিজ্ঞানী! তোমার তারার মানচিত্রে একটা নতুন তারা জ্বলে উঠেছে।">
+      <div class="badge-wrap">
+        <svg class="medal" viewBox="0 0 200 220" aria-hidden="true">
+          <path d="M60 0h30l20 70H80zM140 0h-30L90 70h30z" fill="#2f6bff"/>
+          <path d="M75 0h10l20 70h-10zM125 0h-10L95 70h10z" fill="#ff4f8b"/>
+          <circle cx="100" cy="135" r="78" fill="#ffc93c"/>
+          <circle cx="100" cy="135" r="62" fill="#ffdb6e" stroke="#e8a800" stroke-width="4" stroke-dasharray="6 6"/>
+          <g transform="translate(100 135) rotate(35) translate(-14 -40) scale(.5)">
+            <path d="M28 0C10 18 10 50 12 96h32c2-46 2-78-16-96z" fill="#f7f9ff"/>
+            <path d="M28 0c-8 8-12 16-14 26h28C40 16 36 8 28 0z" fill="#ff7a1a"/>
+            <circle cx="28" cy="48" r="9" fill="#2f6bff"/>
+            <path d="M8 74l-8 22h16zM48 74l8 22H40z" fill="#ff4f8b"/>
+            <path d="M16 96q12 40 24 0z" fill="#ff7a1a"/>
+          </g>
+        </svg>
+        <h2>খুদে রকেট বিজ্ঞানী 🏅</h2>
+        <p class="muted">তুমি শিখলে: নিউটনের তৃতীয় সূত্র, ঠেলা বল বনাম ওজন, আর মহাকাশ কোথায় শুরু।</p>
+      </div>
+      <div class="step-nav">
+        <a class="btn btn--blue" href="index.html">🏠 বাড়ি ফিরে যাও</a>
+        <button class="btn soft" id="again">🔁 আবার খেলো</button>
+      </div>
+    </section>
+
+    <div class="step-nav" id="nav">
+      <button class="btn soft" id="prev">← আগের ধাপ</button>
+      <button class="btn btn--blue" id="next">পরের ধাপ →</button>
+    </div>
+  </main>
+
+  <script src="js/common.js"></script>
+  <script src="js/rocket.js"></script>
+</body>
+</html>

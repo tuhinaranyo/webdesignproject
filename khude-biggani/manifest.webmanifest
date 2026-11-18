@@ -1,0 +1,16 @@
+{
+  "name": "খুদে বিজ্ঞানী",
+  "short_name": "খুদে বিজ্ঞানী",
+  "description": "বাংলায় বিনামূল্যে শিশুদের জন্য বিজ্ঞান: খেলতে খেলতে শেখা।",
+  "lang": "bn",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#edf2ff",
+  "theme_color": "#edf2ff",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

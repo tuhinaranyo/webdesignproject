@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>খুদে বিজ্ঞানী — খেলতে খেলতে বিজ্ঞান</title>
+  <meta name="description" content="বাংলায় বিনামূল্যে শিশুদের জন্য বিজ্ঞান: রকেট, রোবট, কোডিং আর আকাশের তারা। ইন্টারনেট ছাড়াও চলে।" />
+  <meta name="theme-color" content="#edf2ff" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/kb.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <div class="top__bar soft">
+        <a href="index.html" class="brand"><span class="brand__icon soft-sm">🔬</span>খুদে বিজ্ঞানী</a>
+        <div class="stars soft-in" aria-label="তোমার তারা">⭐ <b id="starCount">০</b>/<span>৬</span></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- Hero -->
+    <section class="hero">
+      <div>
+        <h1>খেলতে খেলতে শিখি <span>বিজ্ঞান!</span></h1>
+        <p class="lead">রকেট, রোবট, কোডিং আর আকাশের তারা। সব শিখবে বাংলায়, একদম বিনামূল্যে। ইন্টারনেট না থাকলেও চলবে!</p>
+        <div class="hero__cta">
+          <a class="btn btn--go" href="rocket.html">চলো শুরু করি 🚀</a>
+          <button class="btn soft voice-btn" id="hearBtn">🔊 তুহিনের কথা শোনো</button>
+        </div>
+      </div>
+
+      <div class="hero__buddy buddy" style="flex-direction:column;align-items:center">
+        <p class="bubble soft" id="heroBubble">হ্যালো বন্ধু! আমি তুহিন, একটা ছোট্ট রোবট। চলো, একসাথে বিজ্ঞানের দুনিয়ায় ঘুরে আসি!</p>
+        <div class="tuhin" id="heroTuhin" role="button" tabindex="0" aria-label="তুহিনকে ছুঁয়ে দেখো"></div>
+        <span class="orbit-deco" style="left:4%;top:30%">🪐</span>
+        <span class="orbit-deco" style="right:6%;top:46%;animation-delay:-2s">⭐</span>
+        <span class="orbit-deco" style="left:12%;bottom:6%;animation-delay:-3.5s">⚙️</span>
+      </div>
+    </section>
+
+    <ul class="promises">
+      <li class="soft"><span>🎁</span>সম্পূর্ণ বিনামূল্যে</li>
+      <li class="soft"><span>🚫</span>কোনো বিজ্ঞাপন নেই</li>
+      <li class="soft"><span>📶</span>অফলাইনেও চলে</li>
+      <li class="soft"><span>🗣️</span>বাংলায় কথা বলে</li>
+    </ul>
+
+    <!-- Worlds -->
+    <section aria-labelledby="worldsTitle">
+      <h2 class="sec-title" id="worldsTitle">কোন জগতে যাবে?</h2>
+      <p class="muted">প্রতিটি জগতে আছে গল্প, খেলা, বাসায় করার মতো পরীক্ষা আর একটা ব্যাজ।</p>
+      <div class="worlds" id="worlds"></div>
+    </section>
+
+    <!-- Star map -->
+    <section class="starmap" aria-labelledby="smTitle">
+      <h2 class="sec-title" id="smTitle">আমার তারার মানচিত্র ✨</h2>
+      <p>প্রতিটি জগৎ শেষ করলে আকাশে একটা নতুন তারা জ্বলে উঠবে। সবগুলো জ্বালাতে পারবে?</p>
+      <div class="starmap__sky">
+        <svg viewBox="0 0 600 180" id="starSvg" aria-hidden="true"></svg>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer wrap">
+    <p>ভালোবাসা দিয়ে বানিয়েছেন <b>তুহিন</b>, বাংলাদেশের প্রতিটি শিশুর জন্য। 💛</p>
+    <p>তোমার অগ্রগতি শুধু তোমার ফোনেই থাকে। আমরা কোনো তথ্য নিই না।</p>
+  </footer>
+
+  <script src="js/common.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>
