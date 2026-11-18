@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Plume — Soft Goods</title>
+  <meta name="description" content="Neumorphic / soft-UI ecommerce demo with a cursor-following light source, day/night theme and springy micro-interactions." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script>
+    // Set theme before paint to avoid a flash. Saved choice > system dark > time of day.
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('plume-theme'); } catch (e) {}
+      if (!t) {
+        var h = new Date().getHours();
+        var night = h >= 19 || h < 6;
+        var sysDark = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches;
+        t = sysDark || night ? 'dark' : 'light';
+      }
+      document.documentElement.dataset.theme = t;
+      document.documentElement.classList.add('js');
+    })();
+  </script>
+</head>
+<body>
+  <div class="spotlight" aria-hidden="true"></div>
+
+  <!-- ===== Header ===== -->
+  <header class="header">
+    <div class="header__bar neu">
+      <a href="#" class="logo" aria-label="Plume home">
+        <span class="logo__mark neu" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="logo__word">plume</span>
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <a href="#shop">Shop</a>
+        <a href="#features">Why Plume</a>
+        <a href="#newsletter">Journal</a>
+      </nav>
+
+      <div class="header__actions">
+        <label class="search neu-in">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+          <input id="search" type="search" placeholder="Search" aria-label="Search products" autocomplete="off" />
+        </label>
+
+        <button class="theme-toggle neu-in" id="themeToggle" aria-label="Toggle day / night theme">
+          <span class="theme-toggle__knob neu"><span class="sun"></span><span class="moon"></span></span>
+        </button>
+
+        <button class="icon-btn neu" id="cartBtn" aria-label="Open cart">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14l-1.4 10.2a2 2 0 0 1-2 1.8H8.4a2 2 0 0 1-2-1.8z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+          <span class="badge" id="cartCount" aria-live="polite">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== Hero ===== -->
+    <section class="hero">
+      <div class="hero__copy reveal">
+        <span class="eyebrow neu-in"><span class="dot"></span> New drop · Soft Series 02</span>
+        <h1>Objects that feel <em>good</em> to touch.</h1>
+        <p class="lead">Small-batch audio, wearables and homeware, shaped by hand and finished in soft-touch colour. Move your cursor: the light follows you.</p>
+        <div class="hero__cta">
+          <a href="#shop" class="btn btn--accent">Shop the drop</a>
+          <button class="btn neu" id="spinBtn">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            Spin it
+          </button>
+        </div>
+        <ul class="stats">
+          <li class="neu"><b>4.9★</b><span>12k reviews</span></li>
+          <li class="neu"><b>30d</b><span>free returns</span></li>
+          <li class="neu"><b>CO₂</b><span>neutral ship</span></li>
+        </ul>
+      </div>
+
+      <div class="hero__stage reveal" style="--i:1">
+        <div class="stage neu-in" id="stage">
+          <svg class="ring" viewBox="0 0 200 200" aria-hidden="true">
+            <circle class="ring__track" cx="100" cy="100" r="92" />
+            <circle class="ring__bar" id="ringBar" cx="100" cy="100" r="92" pathLength="100" />
+          </svg>
+          <div class="stage__disc neu">
+            <div class="stage__product" id="heroProduct" data-depth="14"></div>
+          </div>
+          <div class="countdown neu" data-depth="-10">
+            <small>Drop ends in</small>
+            <b id="countdown">00:00:00</b>
+          </div>
+
+          <!-- floating decoration, parallax via data-depth -->
+          <span class="deco pill pill--pink" data-depth="28" style="--x:4%;--y:18%;--r:-24deg"></span>
+          <span class="deco pill pill--yellow" data-depth="-22" style="--x:80%;--y:10%;--r:18deg"></span>
+          <span class="deco pill pill--sky" data-depth="18" style="--x:86%;--y:72%;--r:-8deg"></span>
+          <span class="deco ball ball--yellow" data-depth="34" style="--x:10%;--y:74%"></span>
+          <span class="deco ball ball--pink" data-depth="-30" style="--x:92%;--y:44%"></span>
+          <span class="deco cube" data-depth="24" style="--x:22%;--y:4%;--r:14deg"></span>
+          <svg class="deco squiggle" data-depth="-16" style="--x:2%;--y:48%" viewBox="0 0 80 20" aria-hidden="true"><path d="M2 10q8-10 16 0t16 0 16 0 16 0 12 0"/></svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Shop ===== -->
+    <section class="shop" id="shop">
+      <div class="section-head reveal">
+        <div>
+          <h2>The Soft Series</h2>
+          <p class="muted">Pick a colour, tap to add. Everything springs.</p>
+        </div>
+        <div class="tabs neu-in" role="tablist" aria-label="Filter by category" id="tabs">
+          <span class="tabs__indicator neu" aria-hidden="true"></span>
+          <button role="tab" aria-selected="true" data-cat="all">All</button>
+          <button role="tab" aria-selected="false" data-cat="audio">Audio</button>
+          <button role="tab" aria-selected="false" data-cat="wear">Wear</button>
+          <button role="tab" aria-selected="false" data-cat="home">Home</button>
+          <button role="tab" aria-selected="false" data-cat="tech">Tech</button>
+        </div>
+      </div>
+
+      <div class="grid" id="grid"></div>
+      <p class="empty muted" id="empty" hidden>Nothing matches that — try another word.</p>
+      <noscript><p class="muted">Enable JavaScript to browse the products.</p></noscript>
+    </section>
+
+    <!-- ===== Features ===== -->
+    <section class="features" id="features">
+      <article class="feature neu reveal" style="--i:0">
+        <span class="feature__icon neu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg></span>
+        <h3>Free 2-day shipping</h3>
+        <p class="muted">On every order over $250, packed in plastic-free moulded pulp.</p>
+      </article>
+      <article class="feature neu reveal" style="--i:1">
+        <span class="feature__icon neu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 3-6.2"/><path d="M4 4v4h4"/></svg></span>
+        <h3>30-day returns</h3>
+        <p class="muted">Not in love? Send it back. We'll even pick it up from your door.</p>
+      </article>
+      <article class="feature neu reveal" style="--i:2">
+        <span class="feature__icon neu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6z"/><path d="m9 12 2 2 4-4"/></svg></span>
+        <h3>2-year warranty</h3>
+        <p class="muted">Repairs, not replacements. Spare parts stocked for a decade.</p>
+      </article>
+    </section>
+
+    <!-- ===== Newsletter ===== -->
+    <section class="newsletter neu reveal" id="newsletter">
+      <div>
+        <h2>Get first dibs on the next drop.</h2>
+        <p class="muted">One email per drop. No noise.</p>
+      </div>
+      <form class="newsletter__form" id="newsForm">
+        <label class="field neu-in">
+          <input type="email" required placeholder="you@email.com" aria-label="Email address" />
+        </label>
+        <button class="btn btn--accent" type="submit">Notify me</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span class="muted">© 2026 Plume Soft Goods — a design demo.</span>
+    <span class="muted">Neumorphism · Soft UI · Tactile motion</span>
+  </footer>
+
+  <!-- ===== Cart drawer ===== -->
+  <div class="scrim" id="scrim" hidden></div>
+  <aside class="drawer" id="drawer" aria-label="Shopping cart" aria-hidden="true" tabindex="-1">
+    <div class="drawer__head">
+      <h2>Your bag</h2>
+      <button class="icon-btn neu" id="closeCart" aria-label="Close cart">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+
+    <div class="ship neu-in">
+      <p id="shipText">Add $250 more for free shipping</p>
+      <div class="ship__track"><span class="ship__bar" id="shipBar"></span></div>
+    </div>
+
+    <ul class="cart-list" id="cartList"></ul>
+    <p class="cart-empty muted" id="cartEmpty">Your bag is light as a feather.</p>
+
+    <div class="drawer__foot">
+      <div class="total"><span>Subtotal</span><b id="subtotal">$0</b></div>
+      <button class="btn btn--accent btn--block" id="checkout">Checkout</button>
+    </div>
+  </aside>
+
+  <div class="toast neu" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
